@@ -1,0 +1,71 @@
+@baseUrl = http://localhost:8080
+
+### 1. Listar productoa (al inicio la lista está vacía)
+GET {{baseUrl}}/api/productos
+
+### 2. Crear un producto
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+    "nombre": "Teclado mecánico",
+    "cantidad": 15
+}
+
+### 3. Crear otro producto
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+    "nombre": "Mouse inalámbrico",
+    "cantidad": 30
+}
+
+### 4. Listar productos (ahora hay 2)
+GET {{baseUrl}}/api/productos
+
+### 5. Modificar el producto con id 1
+PUT {{baseUrl}}/api/productos/1
+Content-Type:  application/json
+
+{
+    "nombre": "Teclado mecánico RGB",
+    "cantidad": 12
+}
+
+### 6. Eliminar el producto con id 2
+DELETE {{baseUrl}}/api/productos/2
+
+### 7. Listar productos (queda solo el producto 1, modificado)
+GET {{baseUrl}}/api/productos
+
+### 8. Error: crear un producto sin nombre
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+    "nombre": "",
+    "cantidad": 5
+}
+
+### 9. Error: crear un producto con cantidad negativa
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+    "nombre": "Monitor",
+    "cantidad": -3
+}
+
+### 10. Error: modificar un producto que no existe
+PUT {{baseUrl}}/api/productos/99
+Content-Type: application/json
+
+{
+    "nombre": "No existe",
+    "cantidad": 1
+}
+
+### 11. Error: eliminar un producto que no existe
+DELETE {{baseUrl}}/api/productos/99
+
